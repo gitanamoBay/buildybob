@@ -1,0 +1,8 @@
+[package]
+name = "BuildyBob"
+version = "0.1.0"
+authors = ["grant lodge <grant.lodge@outlook.com>"]
+
+[dependencies]
+docopt = "0.7.0
+rustc-serialize = "0.3"
