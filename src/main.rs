@@ -1,25 +1,31 @@
-#![feature(path_ext, plugin)]
-#![plugin(docopt_macros)]
-
 extern crate docopt;
-
-use std::fs::File;
-use std::io::prelude::*;
-use std::path::Path;
+extern crate rustc_serialize;
 
 use docopt::Docopt;
-use rustc_serialize::json;
 
-docopt!(Args derive Debug, "
-    buildybob builds deploys database.
+mod build;
+
+const USAGE: &'static str = "
+    buildybob deploys database.
 
 Usage:
-    buildybob clean <path>
-");
+    buildybob <path> [--clean]
+Options:
+    -h --help       Show this screen.
+    --version       Show Version.
+    --clean         Deploy fresh copy of database.
+";
+
+#[derive(Debug, RustcDecodable)]
+struct Args {
+    flag_clean: bool,
+    arg_path: String,
+}
 
 fn main() {
-    let args: Args = Argss::docopt().decode().unwrap_or_else(|e| e.exit());
-
-
-
+    let args: Args = Docopt::new(USAGE)
+                            .and_then(|d| d.decode())
+                            .unwrap_or_else(|e| e.exit());
+    
+    build::run(&args.arg_path);
 }

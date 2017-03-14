@@ -1,8 +1,9 @@
 [package]
-name = "BuildyBob"
+name = "buildy_bob"
 version = "0.1.0"
 authors = ["grant lodge <grant.lodge@outlook.com>"]
 
 [dependencies]
-docopt = "0.7.0
+docopt = "0.7"
 rustc-serialize = "0.3"
+postgres = "0.13"
