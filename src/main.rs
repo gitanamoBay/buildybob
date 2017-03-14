@@ -6,7 +6,7 @@ use docopt::Docopt;
 mod build;
 
 const USAGE: &'static str = "
-    buildybob deploys database.
+buildybob deploys database.
 
 Usage:
     buildybob <path> [--clean]
@@ -27,7 +27,5 @@ fn main() {
                             .and_then(|d| d.decode())
                             .unwrap_or_else(|e| e.exit());
     
-    let path = std::path::Path::new(&args.arg_path);
-
-    build::run(&path);
+    build::run(args.arg_path);
 }
