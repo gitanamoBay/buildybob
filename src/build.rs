@@ -1,6 +1,11 @@
+use std::path::Path;
 
+pub fn run(root: &Path) {
+    let folders = vec!["schema"];
 
-pub fn run(path: &str) {
-    let x = 0;
-    print!("{}", x);
+    for folder in folders {
+        let path = root.join(folder);
+
+        print!("{}", path.display());
+    }
 }

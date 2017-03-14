@@ -27,5 +27,7 @@ fn main() {
                             .and_then(|d| d.decode())
                             .unwrap_or_else(|e| e.exit());
     
-    build::run(&args.arg_path);
+    let path = std::path::Path::new(&args.arg_path);
+
+    build::run(&path);
 }
