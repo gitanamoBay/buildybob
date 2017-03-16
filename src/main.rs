@@ -10,6 +10,7 @@ buildybob deploys database.
 
 Usage:
     buildybob <path> [--clean]
+    
 Options:
     -h --help       Show this screen.
     --version       Show Version.
