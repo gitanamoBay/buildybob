@@ -3,23 +3,28 @@ use std::fs::{self, DirEntry};
 use std::path::Path;
 
 
-pub fn run<P: AsRef<Path>>(root: P) {
+pub fn run<P: AsRef<Path>>(root: P, db: &str) {
     let root = root.as_ref();
+
+    println!("{}", db);
 
     let folders = vec!["filegroup","partition", "schema", "table"];
 
     for folder in folders {
         let path = root.join(folder);
-        print!("Deploying {}s readinging from {}", folder, path.display());
+        
+        println!("Deploying {}s readinging from {}", folder, path.display());
         
         if !path.is_dir() {
             panic!("{} could not be located", path.display());
         }
-                                           
-        for file in try!(fs::read_dir(path)) {
+
+        let files =  fs::read_dir(path.clone()).unwrap();
+                                
+        for file in files {
             
         }
         
-        print!("Successfully deployed {}s in {}", folder, path.display());
+        println!("Successfully deployed {}s in {}", folder, path.display());
     }
 }
