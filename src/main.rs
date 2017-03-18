@@ -18,7 +18,7 @@ Options:
     --clean         Deploy fresh copy of database.
 ";
 
-const DEFAULT_SERVER: &'static str = "localhost";
+const DEFAULT_SERVER: &'static str = "postgresql://postgres@localhost";
 
 #[derive(Debug, RustcDecodable)]
 struct Args {
@@ -28,10 +28,8 @@ struct Args {
 }
 
 fn main() {
-    let args: Args = Docopt::new(USAGE)
-                            .and_then(|d| d.decode())
-                            .unwrap_or_else(|e| e.exit());
-    
+    let args: Args = Docopt::new(USAGE).and_then(|d| d.decode()).unwrap_or_else(|e| e.exit());
+
     let mut server: String = DEFAULT_SERVER.to_string();
 
     if !args.flag_server.is_empty() {
