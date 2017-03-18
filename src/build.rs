@@ -14,14 +14,10 @@ pub fn run<P: AsRef<Path>>(root: P, db: &str) {
 
     let conn = Connection::connect(db, TlsMode::None).unwrap();
 
-    print!("{:?}", conn);
-
     let folders = vec!["filegroup", "partition", "schema", "table"];
 
     for folder in folders {
         let path = root.join(folder);
-
-        println!("Deploying {}s reading from {}", folder, path.display());
 
         if !path.is_dir() {
             panic!("{} could not be located", path.display());
@@ -35,6 +31,10 @@ pub fn run<P: AsRef<Path>>(root: P, db: &str) {
             }
         }
     }
+}
+
+fn traverse() {
+    
 }
 
 fn run_file(path: &Path, db: &Connection) {
