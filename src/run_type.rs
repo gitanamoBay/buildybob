@@ -1,7 +1,7 @@
-//declare a struct, -> string name, enum type and order 
+//declare a struct, -> string name, enum type and order
 #[derive(Clone)]
 pub enum SqlType {
-    Table
+    Table,
 }
 
 pub struct SqlRunType {
@@ -11,7 +11,9 @@ pub struct SqlRunType {
 }
 
 pub fn get_types() -> Vec<SqlRunType> {
-    return vec![
-        SqlRunType{sql_type: SqlType::Table, folder_name: "table".to_string(), order: 5}
-    ];
+    return vec![SqlRunType {
+                    sql_type: SqlType::Table,
+                    folder_name: "table".to_string(),
+                    order: 5,
+                }];
 }

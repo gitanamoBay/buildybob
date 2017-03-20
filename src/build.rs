@@ -1,9 +1,9 @@
 extern crate postgres;
 
-use std::fs::{self};
+use std::fs;
 use std::path::Path;
 
-use self::postgres::{Connection};
+use self::postgres::Connection;
 
 use file_runner;
 use run_type;
@@ -39,9 +39,7 @@ fn traverse(path: &Path, db: &Connection, file_type: run_type::SqlType) {
                         file_runner::run_file(&entry_path, &db, file_type.clone());
                     }
                 }
-             }
-         }
+            }
+        }
     }
 }
-
-
