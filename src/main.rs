@@ -4,6 +4,8 @@ extern crate rustc_serialize;
 use docopt::Docopt;
 
 mod build;
+mod file_runner;
+mod run_type;
 
 const USAGE: &'static str = "
 buildybob deploys database.
