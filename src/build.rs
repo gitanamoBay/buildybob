@@ -1,13 +1,9 @@
 extern crate postgres;
 
-use std::io;
-use std::io::prelude::*;
-use std::io::Read;
-use std::fs::{self, DirEntry};
-use std::fs::File;
+use std::fs::{self};
 use std::path::Path;
 
-use self::postgres::{Connection, TlsMode};
+use self::postgres::{Connection};
 
 use file_runner;
 use run_type;
@@ -15,7 +11,7 @@ use run_type;
 pub fn run<P: AsRef<Path>>(root: P, db: &str) {
     let root = root.as_ref();
 
-    let conn = Connection::connect(db, TlsMode::None).unwrap();
+    let conn = Connection::connect(db, postgres::TlsMode::None).unwrap();
 
     let types = run_type::get_types();
 
