@@ -16,11 +16,12 @@ pub fn run_file(path: &Path, db: &Connection, sql_t: run_type::SqlType) {
 
     if let Ok(mut file) = File::open(path) {
         if let Ok(read_length) = file.read_to_string(&mut buffer) {
-            if read_length > 0 {
-                //    db.execute(&buffer, &[]).unwrap();
+            if read_length <= 0 {
+                return;
             }
         }
     }
+    //    db.execute(&buffer, &[]).unwrap();
 
 
 }
