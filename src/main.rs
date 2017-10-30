@@ -11,13 +11,13 @@ const USAGE: &'static str = "
 buildybob deploys database.
 
 Usage:
-    buildybob <path> [--clean | --server=<str>]
+    buildybob <path> [--clean | --configfile=<str>]
     
 Options:
-    -h --help       Show this screen.
-    --server=<str>   Server
-    --version       Show Version.
-    --clean         Deploy fresh copy of database.
+    -h --help               Show this screen.
+    --version               Show Version.
+    --clean                 Deploy fresh copy of database.
+    --configfile=<str>      Which meta file to use at root      
 ";
 
 const DEFAULT_SERVER: &'static str = "postgresql://postgres@localhost";
@@ -25,7 +25,7 @@ const DEFAULT_SERVER: &'static str = "postgresql://postgres@localhost";
 #[derive(Debug, RustcDecodable)]
 struct Args {
     flag_clean: bool,
-    flag_server: String,
+    flag_meta: String,
     arg_path: String,
 }
 

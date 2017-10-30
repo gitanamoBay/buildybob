@@ -1,0 +1,6 @@
+{
+    "server" : "localhost",
+    "name" : "postgres",
+    "port" : 0,
+    "clean" : false
+}
